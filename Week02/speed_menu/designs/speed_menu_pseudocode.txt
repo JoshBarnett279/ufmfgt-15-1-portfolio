@@ -1,28 +1,48 @@
 START
-  PRINT "Menu:"
-  PRINT "1. Check speed"
-  PRINT "2. Convert m/s to mph"
-  PRINT "3. Exit"
 
-  READ choice
+DO
+    DISPLAY menu options:
+        1. Check speed
+        2. Convert m/s to mph
+        3. Exit
 
-  SWITCH choice
-    CASE 1:
-      READ speed
-      IF speed < 0 THEN
-          PRINT "Invalid speed"
-      ELSE IF speed > 70 THEN
-          PRINT "Speeding"
-      ELSE
-          PRINT "Valid speed"
-      ENDIF
-    CASE 2:
-      READ speed_ms
-      speed_mph = speed_ms × 2.23694
-      PRINT speed_mph
-    CASE 3:
-      PRINT "Exiting program"
-    DEFAULT:
-      PRINT "Invalid option"
-  ENDSWITCH
+    READ user choice
+
+    SWITCH choice
+
+        CASE 1:
+            READ speed in mph
+            IF speed < 0 THEN
+                DISPLAY "Invalid speed"
+            ELSE IF speed > 70 THEN
+                DISPLAY "Speeding"
+            ELSE
+                DISPLAY "Valid speed"
+            ENDIF
+            DISPLAY "Returning to the menu"
+            WAIT 0.5 seconds
+            BREAK
+
+        CASE 2:
+            READ speed in m/s
+            speed_mph = speed_ms × 2.23694
+            DISPLAY speed_mph
+            DISPLAY "Returning to the menu"
+            WAIT 0.5 seconds
+            BREAK
+
+        CASE 3:
+            DISPLAY "Exiting program"
+            BREAK
+
+        DEFAULT:
+            DISPLAY "Invalid option"
+            DISPLAY "Returning to the menu"
+            WAIT 0.5 seconds
+            BREAK
+
+    ENDSWITCH
+
+WHILE choice is not equal to 3
+
 END
