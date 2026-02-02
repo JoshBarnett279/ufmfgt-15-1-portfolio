@@ -1,0 +1,6 @@
+START
+  PRINT "Enter speed in m/s"
+  READ speed_ms
+  speed_mph = speed_ms × 2.23694
+  PRINT speed_mph
+END
