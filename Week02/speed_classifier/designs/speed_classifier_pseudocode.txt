@@ -1,0 +1,13 @@
+START
+  PRINT "enter speed in mph:"
+  READ speed
+
+  IF speed > 70 THEN
+    PRINT "Speeding"
+  ELSE IF speed >= 30
+    PRINT "Slow"
+  ELSE
+    PRINT "Normal"
+  ENDIF
+
+END
