@@ -1,0 +1,13 @@
+START
+  PRINT "Enter speed in mph"
+  READ speed
+
+  IF speed < 0 THEN
+      PRINT "Invalid speed"
+  ELSE IF speed > 70 THEN
+      PRINT "Speeding"
+  ELSE
+      PRINT "Valid speed"
+  ENDIF
+
+END
