@@ -1,0 +1,12 @@
+START
+
+SET number = -1
+
+WHILE number < 0 DO
+    DISPLAY "Enter a positive number"
+    READ number
+ENDWHILE
+
+DISPLAY "Valid number entered"
+
+END
