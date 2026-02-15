@@ -3,8 +3,14 @@
 int main(void) {
     int mark;
 
-    printf("Please enter your mark:\n");
-    scanf("%d", &mark);
+    do {
+        printf("Please enter your mark (0-100):\n\n ");
+        scanf("%d", &mark);
+
+        if (mark < 0 || mark > 100) {
+            printf("Invalid mark, try again.\n");
+        }
+    } while (mark < 0 || mark > 100);
     if (mark < 0 ||  mark > 100){
         printf("Invalid\n");
     }
