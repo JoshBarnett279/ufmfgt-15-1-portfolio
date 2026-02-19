@@ -1,0 +1,22 @@
+START
+
+DECLARE an array of 15 integers called accessCodes
+DECLARE integer targetCode, i as integer
+
+INITIALIZE accessCodes with random values, including 42 somewhere in the array
+
+PROMPT the user to enter the target code to search for
+READ the targetCode from user input
+
+FOR each element in the accessCodes array
+    IF the current element matches targetCode
+        PRINT "Access Code Found at Position X", where X is the current index
+        BREAK the loop
+    END IF
+END FOR
+
+IF the loop completes without finding the targetCode
+    PRINT "Code Not Found"
+END IF
+
+END
