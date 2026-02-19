@@ -1,0 +1,12 @@
+START
+
+READ age
+READ hasID
+
+IF age >= 18 AND hasID == 1 THEN
+    PRINT "Entry allowed"
+ELSE
+    PRINT "Entry denied"
+END IF
+
+END
