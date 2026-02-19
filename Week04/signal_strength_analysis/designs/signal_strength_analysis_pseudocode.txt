@@ -1,0 +1,23 @@
+START
+
+DECLARE an array for 8 signal values
+
+SET the values of the array to: 88.5, 92.1, 85.0, 95.3, 89.9, 91.2, 84.8, 90.5
+
+DECLARE variables for min, max, sum, and average
+
+SET min and max to the first signal value
+
+SET sum to 0
+
+FOR each signal in the array
+    ADD the signal value to sum
+    IF the signal is less than min, set min to this signal
+    IF the signal is greater than max, set max to this signal
+END FOR
+
+SET average to sum divided by 8
+
+PRINT the min, max, and average values
+
+END
