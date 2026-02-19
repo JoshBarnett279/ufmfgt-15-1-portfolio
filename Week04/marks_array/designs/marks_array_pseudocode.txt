@@ -1,0 +1,19 @@
+START
+
+DECLARE array of 5 integers called marks
+DECLARE integer total = 0
+DECLARE float average
+
+FOR i from 0 to 4
+    READ marks[i]
+END FOR
+
+FOR i from 0 to 4
+    total = total + marks[i]
+END FOR
+
+average = total / 5
+
+PRINT average
+
+END
