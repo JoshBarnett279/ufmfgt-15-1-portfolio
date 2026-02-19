@@ -1,0 +1,22 @@
+START
+
+DECLARE an array of 12 integers called statusCodes
+DECLARE integer variables for positiveCount, negativeCount, and zeroCount
+
+INITIALIZE statusCodes with values: {1, 5, -2, 0, 8, -1, 0, 0, 9, -4, 2, 1}
+
+SET positiveCount, negativeCount, and zeroCount to 0
+
+FOR each element in the statusCodes array
+    IF the current element is positive
+        INCREMENT positiveCount by 1
+    ELSE IF the current element is negative
+        INCREMENT negativeCount by 1
+    ELSE
+        INCREMENT zeroCount by 1
+    END IF
+END FOR
+
+PRINT the values of positiveCount, negativeCount, and zeroCount
+
+END
