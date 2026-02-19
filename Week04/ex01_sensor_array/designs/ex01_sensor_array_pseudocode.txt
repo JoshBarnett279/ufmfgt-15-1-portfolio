@@ -1,0 +1,13 @@
+START
+
+DECLARE array sensors of 10 doubles
+
+FOR i from 0 to 9
+    sensors[i] = -1.0
+END FOR
+
+FOR i from 0 to 9
+    PRINT sensors[i]
+END FOR
+
+END
