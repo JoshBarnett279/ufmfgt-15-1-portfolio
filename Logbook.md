@@ -15,31 +15,93 @@ Brief description of what was covered this week.
 **Reflection:**  
 Short paragraph on how this week helped your understanding or confidence.
 
+Week 1 – Introduction to C Programming
 
-### Week 1 – Introduction to C Programming
+Overview:
+In Week 1, I focused on getting used to CLion and understanding the basics of C programming. I completed some design tasks first, such as writing pseudocode and creating a traffic light flowchart, before moving on to writing my first C programs including a hello program and a speed converter.
 
-**Overview:**  
-In Week 1, I focused on getting set up with CLion and learning the basics of programming in C. This included writing my first simple programs and understanding how input and output work.
+What I learned:
 
-**What I learned:**  
-This week helped me understand the basic structure of a C program and how everything runs from the `main` function. I learned how to print text using `printf` and how to take input from the user using `scanf`. I also learned how variables are used to store values and how simple calculations can be performed in code.
+How a C program runs from "main()"
 
-**Challenges and solutions:**  
-At first, I ran into problems with my code not compiling, mainly due to missing semicolons and using `scanf` incorrectly. By looking at the compiler error messages in CLion and fixing the lines it pointed to, I slowly got used to how strict C syntax is.
+How to use "printf()" to display output
 
-**Reflection:**  
-Week 1 helped me get more confident with both the C language and the development environment. Writing a simple speed converter made it easier to understand how programs follow an input, process, and output structure, which helped prepare me for more complex tasks later on.
+How to use "scanf()" to read user input
 
-### Week 2 – Decision Making and Menu Programs
+How to declare variables and carry out simple calculations
 
-**Overview:**  
-Week 2 introduced decision making in C using conditional statements and more interactive programs that respond to user input.
+Why planning with pseudocode makes coding easier
 
-**What I learned:**  
-I learned how to use `if`, `else if`, and `else` statements to control how a program behaves depending on conditions. I also learned why input validation is important, for example checking for negative values before processing data. Later in the week, I learned how to use `switch` statements and loops to create menu-based programs that can run repeatedly.
+How to build and run programs in CLion
 
-**Challenges and solutions:**  
-One of the main challenges was getting the logic in my conditional statements correct. I initially used separate `if` statements instead of an `if / else if` chain, which caused the program to behave incorrectly. Rewriting the logic in the correct order fixed this and helped me understand how conditions are checked step by step.
+Challenges and solutions:
+At the beginning, I had a few issues with small syntax mistakes like missing semicolons and incorrect "scanf()" usage. I also had some problems getting the correct run configuration in CLion. By carefully reading the compiler errors and checking my code step by step, I was able to fix these problems and understand what went wrong.
 
-**Reflection:**  
-Week 2 helped me understand how small pieces of code can be combined into a larger program. Creating the menu-based program showed how loops, conditionals, and user input all work together, and it made the programs feel more like real applications rather than single-use scripts.
+Reflection:
+Week 1 helped me feel more comfortable with both C and the development environment. The speed converter especially helped me understand how input, processing, and output fit together in a program.
+
+Week 2 – Selection Statements
+
+Overview:
+This week introduced conditional statements and decision-making in C. I worked with "if", "else if", "else", and "switch" statements to control how programs respond to user input.
+
+What I learned:
+
+How conditions are checked in order
+
+Why the placement of conditions matters
+
+How to use logical operators such as "&&" and "||"
+
+How to validate user input properly
+
+How to build simple menu-based programs
+
+Challenges and solutions:
+Sometimes my conditions were not in the correct order, which led to incorrect outputs. I fixed this by reorganising the structure and testing different input values to make sure each case worked properly.
+
+Reflection:
+This week improved my logical thinking. I feel more confident writing programs that make decisions and handle different situations correctly.
+
+Week 3 – Nested Logic and Validation
+
+Overview:
+In Week 3, I developed more complex decision structures, including nested "if" statements and validation systems such as mark classification and age verification programs.
+
+What I learned:
+
+How nested "if" statements work
+
+How to validate value ranges correctly
+
+The importance of checking invalid input first
+
+How logical structure affects the overall behaviour of a program
+
+Challenges and solutions:
+One challenge was making sure invalid values were handled before other conditions. I improved this by testing boundary cases and reviewing the order of my logic carefully.
+
+Reflection:
+Week 3 made me more aware of how small logic mistakes can change the outcome of a program. I now feel more confident structuring more detailed conditional systems.
+
+Week 4 – Arrays and Loops
+
+Overview:
+This week focused on arrays and loops to handle multiple pieces of data. I created programs that calculated totals, averages, and identified the highest and lowest values from a set of inputs.
+
+What I learned:
+
+How to declare and use arrays
+
+How "for" and "while" loops operate
+
+How array indexing starts from 0
+
+How to calculate averages and track minimum and maximum values
+
+Challenges and solutions:
+At first, I found array indexing and loop limits slightly confusing. I solved this by carefully tracing through the loop logic and checking that my loop conditions were correct.
+
+Reflection:
+Week 4 was a big improvement in my understanding. Working with arrays made my programs feel more complete and structured, and I am now more confident handling larger sets of data.
+
