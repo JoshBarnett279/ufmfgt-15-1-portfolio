@@ -1,0 +1,17 @@
+START
+
+Get a cup
+Fill kettle with water
+Boil the kettle
+Put 1–2 teaspoons of instant coffee into the cup
+Pour hot water into the cup
+Stir the drink
+
+IF sugar is wanted THEN
+    Add sugar
+    Stir again
+END IF
+
+Coffee is ready
+
+END
