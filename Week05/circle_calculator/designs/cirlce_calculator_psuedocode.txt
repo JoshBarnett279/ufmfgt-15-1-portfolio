@@ -1,0 +1,20 @@
+START
+
+Define constant PI = 3.14159
+
+Define function calculate_circumference
+Input: radius (double)
+Return 2 * PI * radius
+
+Define function calculate_area
+Input: radius (double)
+Return PI * radius * radius
+
+In main:
+Declare a double variable radius
+Ask user for radius
+Call calculate_circumference
+Call calculate_area
+Print both results
+
+END
