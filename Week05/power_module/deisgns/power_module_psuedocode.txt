@@ -1,0 +1,17 @@
+START
+
+Define function power
+Input: base (int), exponent (int)
+Set result to 1
+Repeat exponent times:
+result = result * base
+Return result
+End function
+
+In main:
+Read base
+Read exponent
+Call power(base, exponent)
+Print result
+
+END
