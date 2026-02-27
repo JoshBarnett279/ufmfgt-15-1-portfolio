@@ -1,0 +1,17 @@
+START
+
+Define function swap
+Input: a (int), b (int)
+temp = a
+a = b
+b = temp
+End function
+
+In main:
+Set x = 5
+Set y = 10
+Print x and y (before swap)
+Call swap(x, y)
+Print x and y (after swap)
+
+END
