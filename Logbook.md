@@ -105,3 +105,25 @@ At first, I found array indexing and loop limits slightly confusing. I solved th
 Reflection:
 Week 4 was a big improvement in my understanding. Working with arrays made my programs feel more complete and structured, and I am now more confident handling larger sets of data.
 
+Week 5 – Functions and Modular Programming
+
+Overview:
+In Week 5, I learned how to use functions to organise programs more effectively. Instead of placing all logic inside "main()", I created separate functions for tasks such as addition, circle calculations, validation, exponentiation, and swapping values.
+
+What I learned:
+
+How to declare and define functions
+
+The purpose of function prototypes
+
+How parameters and return values work
+
+The meaning of pass-by-value
+
+How modular design improves program structure
+
+Challenges and solutions:
+The broken swap exercise helped me understand pass-by-value. Although the values were swapped inside the function, they did not change in "main()" because only copies were passed. I also corrected small issues such as using "%lf" correctly when working with "double".
+
+Reflection:
+This week improved my understanding of how larger programs should be structured. Using functions made the code clearer and more organised, and I now feel more prepared to move on to pointers.
