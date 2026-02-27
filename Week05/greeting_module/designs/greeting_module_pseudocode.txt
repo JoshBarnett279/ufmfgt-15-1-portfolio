@@ -1,0 +1,11 @@
+START
+
+Define a function called print_welcome_message
+    Print a decorative banner
+    Print system ready message
+End function
+
+In main:
+    Call print_welcome_message
+
+END
