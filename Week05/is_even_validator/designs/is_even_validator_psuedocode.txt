@@ -1,0 +1,21 @@
+START
+
+Define function is_even
+Input: integer n
+IF n mod 2 equals 0
+Return 1
+ELSE
+Return 0
+END IF
+End function
+
+In main:
+Read an integer from the user
+Call is_even using that number
+IF result is 1
+Print "Even"
+ELSE
+Print "Odd"
+END IF
+
+END

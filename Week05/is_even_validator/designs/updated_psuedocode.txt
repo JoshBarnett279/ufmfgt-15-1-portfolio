@@ -1,0 +1,23 @@
+had to be changed to deal with larger numbers
+
+START
+
+Define function is_even
+Input: string number
+Get last character of string
+IF last character is 0, 2, 4, 6, or 8
+Return 1
+ELSE
+Return 0
+End function
+
+In main:
+Read number as string
+Call is_even
+IF result is 1
+Print "Even"
+ELSE
+Print "Odd"
+END IF
+
+END
