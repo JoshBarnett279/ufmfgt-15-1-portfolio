@@ -1,0 +1,21 @@
+START
+
+Define constant PI
+
+Define function calculate_rlc
+Inputs: R, L, C, frequency
+Outputs (via pointers): Z, phi
+
+omega = 2 * PI * frequency
+X = (omega * L) - (1 / (omega * C))
+Z = square_root( R^2 + X^2 )
+phi = arccos( R / Z )
+
+End function
+
+In main:
+Read R, L, C, frequency from user
+Call calculate_rlc(R, L, C, frequency, &Z, &phi)
+Print Z and phi
+
+END
