@@ -1,0 +1,23 @@
+START
+
+Define function split_time
+Input: total_sec (long), hr (pointer to int), min (pointer to int), sec (pointer to int)
+
+Set *hr to total_sec divided by 3600
+Update total_sec to total_sec remainder 3600
+
+Set *min to total_sec divided by 60
+Set *sec to total_sec remainder 60
+
+End function
+
+In main:
+Declare total_sec
+Declare int hr, min, sec
+
+Ask user for total seconds
+Call split_time(total_sec, &hr, &min, &sec)
+
+Print hr, min, sec
+
+END
