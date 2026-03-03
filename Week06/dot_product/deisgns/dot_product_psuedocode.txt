@@ -1,0 +1,17 @@
+START
+
+Define function dot_product
+Input: array A, array B, size
+Set total = 0
+For i from 0 to size - 1
+total = total + (A[i] * B[i])
+Return total
+End function
+
+In main
+Create two arrays with values
+Set size
+Call dot_product(A, B, size)
+Print result
+
+END
