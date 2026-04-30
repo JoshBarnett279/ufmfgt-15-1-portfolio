@@ -1,0 +1,20 @@
+START
+
+CREATE structure Complex
+    real is double
+    imaginary is double
+
+DECLARE c1 as Complex = {0.0, 1.0}
+DECLARE c2 as Complex = {1.0, 0.0}
+DECLARE c3 as Complex
+
+SET c1 equal to c2
+
+SET c3.real = c1.real + c2.real
+SET c3.imaginary = c1.imaginary + c2.imaginary
+
+PRINT c1.real and c1.imaginary
+PRINT c2.real and c2.imaginary
+PRINT c3.real and c3.imaginary
+
+END
