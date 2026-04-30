@@ -157,15 +157,15 @@ What I learned:
 - How to declare and define structs, including nested structs  
 - How to create arrays of structs for multiple data entries  
 - Using pointers to modify structs in functions  
-- How to read from and write to files using `fopen`, `fscanf`, and `fprintf`  
+- How to read from and write to files using fopen, fscanf, and fprintf  
 - How to combine loops, arithmetic, and boolean flags with structs for calculations and checks  
 - Handling paths and directories for file input/output in C  
 
 Challenges and solutions:
 
-- `fopen` errors taught me the importance of folder existence and working directories. Using `_mkdir()` or absolute paths solved these issues.  
-- Nested structs initially caused syntax confusion — I learned to correctly use `.` for normal access and `->` for pointers.  
-- Calculating age accurately with months and days required creating a `getDaysInMonth` function and handling borrow logic.  
+- fopen errors taught me the importance of folder existence and working directories. Using _mkdir() or absolute paths solved these issues.  
+- Nested structs initially caused syntax confusion — I learned to correctly use . for normal access and -> for pointers.  
+- Calculating age accurately with months and days required creating a getDaysInMonth function and handling borrow logic.  
 - Detecting clipping in waveform data required careful use of loops and boolean flags to stop checking once a clipped sample was found.  
 
 ---
