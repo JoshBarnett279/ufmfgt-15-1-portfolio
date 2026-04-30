@@ -127,3 +127,48 @@ The broken swap exercise helped me understand pass-by-value. Although the values
 
 Reflection:
 This week improved my understanding of how larger programs should be structured. Using functions made the code clearer and more organised, and I now feel more prepared to move on to pointers.
+
+Week 6 – Pointers and Memory Management
+
+Overview:
+This week focused on pointers and how functions can access or modify variables directly in memory. I explored stack memory, passing arrays to functions, and returning multiple values via pointers.
+
+What I learned:
+
+How to declare and use pointers
+The difference between pass-by-value and pass-by-address
+Why returning local variable addresses is unsafe
+How arrays decay to pointers when passed to functions
+Using pointers to return multiple values
+Applying pointers to engineering calculations like RLC circuits, time split, and dot product
+
+Challenges and solutions:
+Understanding why the broken swap didn’t work helped me see how memory is passed. I also fixed double format specifiers and linked the math library for calculations, reinforcing safe memory use.
+
+Reflection:
+Week 6 improved my confidence with memory management in C. I now understand pointers, arrays, and multiple return values, which prepares me to combine modules into larger, more complex programs.
+
+Week 07 – Structs and File I/O
+
+Overview: In Week 07, I learned how to use structs to organise data effectively. Instead of keeping separate variables for related data, I grouped them into structures. I also combined structs with arrays, functions, and file input/output to build practical programs like age calculators, student databases, and waveform analysis helpers.
+
+What I learned:
+
+- How to declare and define structs, including nested structs  
+- How to create arrays of structs for multiple data entries  
+- Using pointers to modify structs in functions  
+- How to read from and write to files using `fopen`, `fscanf`, and `fprintf`  
+- How to combine loops, arithmetic, and boolean flags with structs for calculations and checks  
+- Handling paths and directories for file input/output in C  
+
+Challenges and solutions:
+
+- `fopen` errors taught me the importance of folder existence and working directories. Using `_mkdir()` or absolute paths solved these issues.  
+- Nested structs initially caused syntax confusion — I learned to correctly use `.` for normal access and `->` for pointers.  
+- Calculating age accurately with months and days required creating a `getDaysInMonth` function and handling borrow logic.  
+- Detecting clipping in waveform data required careful use of loops and boolean flags to stop checking once a clipped sample was found.  
+
+---
+
+Reflection:
+This week improved my understanding of structured programming and modular design in C. Using structs, arrays, and functions made the code cleaner and more maintainable. I also learned practical lessons in file management and folder organization, which are crucial for larger projects. I now feel confident applying these techniques in Week 08 for waveform analysis and more complex programs.
