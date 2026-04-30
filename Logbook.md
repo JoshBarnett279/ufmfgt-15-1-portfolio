@@ -168,7 +168,5 @@ Challenges and solutions:
 - Calculating age accurately with months and days required creating a getDaysInMonth function and handling borrow logic.  
 - Detecting clipping in waveform data required careful use of loops and boolean flags to stop checking once a clipped sample was found.  
 
----
-
 Reflection:
 This week improved my understanding of structured programming and modular design in C. Using structs, arrays, and functions made the code cleaner and more maintainable. I also learned practical lessons in file management and folder organization, which are crucial for larger projects. I now feel confident applying these techniques in Week 08 for waveform analysis and more complex programs.
