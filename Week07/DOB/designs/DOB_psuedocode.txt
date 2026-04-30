@@ -1,0 +1,27 @@
+START
+
+CREATE structure Date
+    day is integer
+    month is integer
+    year is integer
+
+FUNCTION calculateAge takes Date dob
+    GET current date
+    CALCULATE difference between current date and dob
+    STORE result in age
+    RETURN age
+
+IN MAIN
+
+DECLARE dob as Date
+DECLARE age as Date
+
+ASK user for day, month, year
+STORE in dob
+
+CALL calculateAge with dob
+STORE result in age
+
+PRINT age in years, months, days
+
+END
