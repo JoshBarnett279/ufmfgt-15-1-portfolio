@@ -1,0 +1,29 @@
+START
+
+SET PI = 3.14159
+
+CREATE structure Cylinder
+    radius is float
+    height is float
+    volume is float
+
+DECLARE cyl as Cylinder
+
+// Step 1: Get dimensions
+ASK user for cyl.radius
+STORE input in cyl.radius
+
+ASK user for cyl.height
+STORE input in cyl.height
+
+// Step 2: Calculate volume
+SET cyl.volume = PI * cyl.radius * cyl.radius * cyl.height
+
+// Step 3: Write to file
+OPEN file "cylinder.txt" for writing
+    WRITE cyl.radius, cyl.height, cyl.volume to file
+CLOSE file
+
+PRINT message "Cylinder data written to cylinder.txt"
+
+END
