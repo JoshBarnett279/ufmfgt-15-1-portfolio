@@ -1,0 +1,46 @@
+START
+
+SET LEN = 50
+SET N = number of students
+
+CREATE structure Person_Name
+    first_name is string of length LEN
+    initial is char
+    second_name is string of length LEN
+
+CREATE structure Student
+    name is Person_Name
+    id_number is integer
+    age is integer
+    module_code is string of suitable length
+
+DECLARE students as array of Student of size N
+
+FUNCTION readStudent takes pointer to Student s
+    ASK user for s.name.first_name
+    ASK user for s.name.initial
+    ASK user for s.name.second_name
+    ASK user for s.id_number
+    ASK user for s.age
+    ASK user for s.module_code
+END FUNCTION
+
+FUNCTION displayStudent takes Student s
+    PRINT s.name.first_name, s.name.initial, s.name.second_name
+    PRINT s.id_number, s.age, s.module_code
+END FUNCTION
+
+FUNCTION displayAll takes array students and size N
+    FOR i = 0 to N-1
+        CALL displayStudent(students[i])
+    END FOR
+END FUNCTION
+
+IN MAIN
+    FOR i = 0 to N-1
+        CALL readStudent(&students[i])
+    END FOR
+
+    CALL displayAll(students, N)
+
+END
