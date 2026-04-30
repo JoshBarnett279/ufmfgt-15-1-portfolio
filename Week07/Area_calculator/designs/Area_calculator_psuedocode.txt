@@ -1,0 +1,69 @@
+START
+
+CREATE structure Point
+    x is float
+    y is float
+
+CREATE structure Rectangle
+    upperLeft is Point
+    lowerRight is Point
+
+FUNCTION area takes Rectangle r
+
+    SET width = r.lowerRight.x - r.upperLeft.x
+    SET height = r.upperLeft.y - r.lowerRight.y
+
+    IF width < 0 THEN
+        SET width = -width
+    END IF
+
+    IF height < 0 THEN
+        SET height = -height
+    END IF
+
+    RETURN width * height
+
+END FUNCTION
+
+FUNCTION centre takes Rectangle r
+
+    DECLARE c as Point
+
+    SET c.x = (r.upperLeft.x + r.lowerRight.x) / 2
+    SET c.y = (r.upperLeft.y + r.lowerRight.y) / 2
+
+    RETURN c
+
+END FUNCTION
+
+FUNCTION moveRectangle takes Rectangle r, x, y
+
+    SET r.upperLeft.x = r.upperLeft.x + x
+    SET r.upperLeft.y = r.upperLeft.y + y
+
+    SET r.lowerRight.x = r.lowerRight.x + x
+    SET r.lowerRight.y = r.lowerRight.y + y
+
+END FUNCTION
+
+IN MAIN
+
+DECLARE r as Rectangle
+DECLARE c as Point
+
+SET r.upperLeft.x = 0
+SET r.upperLeft.y = 10
+SET r.lowerRight.x = 5
+SET r.lowerRight.y = 0
+
+PRINT area(r)
+
+SET c = centre(r)
+PRINT c.x, c.y
+
+CALL moveRectangle with r, 2, 3
+
+PRINT r.upperLeft.x, r.upperLeft.y
+PRINT r.lowerRight.x, r.lowerRight.y
+
+END
