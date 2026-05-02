@@ -19,6 +19,7 @@ int load_csv(const char *filename, WaveformSample samples[], int max_samples);
 double calculate_rms(WaveformSample samples[], int count, int phase);
 double calculate_dc_offset(WaveformSample samples[], int count, int phase);
 int detect_clipping(WaveformSample samples[], int count);
+int detect_clipping_phase(WaveformSample samples[], int count, int phase);
 
 int main(void) {
     WaveformSample samples[MAX_SAMPLES];
@@ -34,6 +35,15 @@ int main(void) {
     double dc_A = calculate_dc_offset(samples, count, 0);
 
     printf("Phase A DC Offset = %.5f V\n", dc_A);
+
+    int clips_A = detect_clipping_phase(samples, count, 0);
+    int clips_B = detect_clipping_phase(samples, count, 1);
+    int clips_C = detect_clipping_phase(samples, count, 2);
+
+    printf("Phase A clipping events = %d\n", clips_A);
+    printf("Phase B clipping events = %d\n", clips_B);
+    printf("Phase C clipping events = %d\n", clips_C);
+    printf("Total clipping readings = %d\n", clips_A + clips_B + clips_C);
 
     return 0;
 }
@@ -72,7 +82,7 @@ int load_csv(const char *filename, WaveformSample samples[], int max_samples)
     return count;
 }
 
-// RMS calculation
+// RMS calculation phase A
 
 double calculate_rms(WaveformSample samples[], int count, int phase) {
     double sum_sq = 0.0;
@@ -113,4 +123,28 @@ double calculate_dc_offset(WaveformSample samples[], int count, int phase)
     }
 
     return sum / count;
+}
+
+// Clipping function
+
+int detect_clipping_phase(WaveformSample samples[], int count, int phase)
+{
+    int clip_count = 0;
+
+    for (int i = 0; i < count; i++)
+    {
+        double value;
+
+        if (phase == 0)
+            value = samples[i].phase_A_voltage;
+        else if (phase == 1)
+            value = samples[i].phase_B_voltage;
+        else
+            value = samples[i].phase_C_voltage;
+
+        if (fabs(value) >= CLIPPING_LIMIT)
+            clip_count++;
+    }
+
+    return clip_count;
 }
