@@ -20,21 +20,22 @@ double calculate_rms(WaveformSample samples[], int count, int phase);
 double calculate_dc_offset(WaveformSample samples[], int count, int phase);
 int detect_clipping(WaveformSample samples[], int count);
 int detect_clipping_phase(WaveformSample samples[], int count, int phase);
+double calculate_peak_to_peak(WaveformSample samples[], int count, int phase);
 
 int main(void) {
     WaveformSample samples[MAX_SAMPLES];
 
     int count = load_csv("power_quality_log.csv", samples, MAX_SAMPLES);
 
-    printf("Loaded %d samples\n", count);
+    printf("Loaded %d samples\n\n", count);
 
     double rms_A = calculate_rms(samples, count, 0);
 
-    printf("Phase A RMS = %.2f V\n", rms_A);
+    printf("Phase A RMS = %.2f V\n\n", rms_A);
 
     double dc_A = calculate_dc_offset(samples, count, 0);
 
-    printf("Phase A DC Offset = %.5f V\n", dc_A);
+    printf("Phase A DC Offset = %.5f V\n\n", dc_A);
 
     int clips_A = detect_clipping_phase(samples, count, 0);
     int clips_B = detect_clipping_phase(samples, count, 1);
@@ -43,7 +44,10 @@ int main(void) {
     printf("Phase A clipping events = %d\n", clips_A);
     printf("Phase B clipping events = %d\n", clips_B);
     printf("Phase C clipping events = %d\n", clips_C);
-    printf("Total clipping readings = %d\n", clips_A + clips_B + clips_C);
+    printf("Total clipping readings = %d\n\n", clips_A + clips_B + clips_C);
+
+    double p2p_A = calculate_peak_to_peak(samples, count, 0);
+    printf("Phase A Peak-to-Peak = %.2f V\n", p2p_A);
 
     return 0;
 }
@@ -147,4 +151,34 @@ int detect_clipping_phase(WaveformSample samples[], int count, int phase)
     }
 
     return clip_count;
+}
+// Peak to peak calculations
+double calculate_peak_to_peak(WaveformSample samples[], int count, int phase)
+{
+    double max_val, min_val;
+
+    for (int i = 0; i < count; i++)
+    {
+        double value;
+
+        if (phase == 0)
+            value = samples[i].phase_A_voltage;
+        else if (phase == 1)
+            value = samples[i].phase_B_voltage;
+        else
+            value = samples[i].phase_C_voltage;
+
+        if (i == 0)
+        {
+            max_val = value;
+            min_val = value;
+        }
+        else
+        {
+            if (value > max_val) max_val = value;
+            if (value < min_val) min_val = value;
+        }
+    }
+
+    return max_val - min_val;
 }
