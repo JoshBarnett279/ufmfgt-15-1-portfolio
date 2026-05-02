@@ -25,7 +25,11 @@ int main(void) {
 
     int count = load_csv("power_quality_log.csv", samples, MAX_SAMPLES);
 
-    printf("Loaded %d samples\n",count);
+    printf("Loaded %d samples\n", count);
+
+    double rms_A = calculate_rms(samples, count, 0);
+
+    printf("Phase A RMS = %.2f V\n", rms_A);
 
     return 0;
 }
@@ -62,4 +66,24 @@ int load_csv(const char *filename, WaveformSample samples[], int max_samples)
     fclose(fp);
 
     return count;
+}
+double calculate_rms(WaveformSample samples[], int count, int phase)
+{
+    double sum_sq = 0.0;
+
+    for (int i = 0; i < count; i++)
+    {
+        double value;
+
+        if (phase == 0)
+            value = samples[i].phase_A_voltage;
+        else if (phase == 1)
+            value = samples[i].phase_B_voltage;
+        else
+            value = samples[i].phase_C_voltage;
+
+        sum_sq += value * value;
+    }
+
+    return sqrt(sum_sq / count);
 }
