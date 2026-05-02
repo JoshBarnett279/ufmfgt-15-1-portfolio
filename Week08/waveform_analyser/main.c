@@ -21,6 +21,7 @@ double calculate_dc_offset(WaveformSample samples[], int count, int phase);
 int detect_clipping(WaveformSample samples[], int count);
 int detect_clipping_phase(WaveformSample samples[], int count, int phase);
 double calculate_peak_to_peak(WaveformSample samples[], int count, int phase);
+int check_compliance(double rms);
 
 int main(void) {
     WaveformSample samples[MAX_SAMPLES];
@@ -30,24 +31,36 @@ int main(void) {
     printf("Loaded %d samples\n\n", count);
 
     double rms_A = calculate_rms(samples, count, 0);
-
-    printf("Phase A RMS = %.2f V\n\n", rms_A);
+    double rms_B = calculate_rms(samples, count, 1);
+    double rms_C = calculate_rms(samples, count, 2);
 
     double dc_A = calculate_dc_offset(samples, count, 0);
-
-    printf("Phase A DC Offset = %.5f V\n\n", dc_A);
-
-    int clips_A = detect_clipping_phase(samples, count, 0);
-    int clips_B = detect_clipping_phase(samples, count, 1);
-    int clips_C = detect_clipping_phase(samples, count, 2);
-
-    printf("Phase A clipping events = %d\n", clips_A);
-    printf("Phase B clipping events = %d\n", clips_B);
-    printf("Phase C clipping events = %d\n", clips_C);
-    printf("Total clipping readings = %d\n\n", clips_A + clips_B + clips_C);
+    double dc_B = calculate_dc_offset(samples, count, 1);
+    double dc_C = calculate_dc_offset(samples, count, 2);
 
     double p2p_A = calculate_peak_to_peak(samples, count, 0);
+    double p2p_B = calculate_peak_to_peak(samples, count, 1);
+    double p2p_C = calculate_peak_to_peak(samples, count, 2);
+
+    int compliant_A = check_compliance(rms_A);
+    int compliant_B = check_compliance(rms_B);
+    int compliant_C = check_compliance(rms_C);
+
+    printf("Phase A RMS = %.2f V\n", rms_A);
+    printf("Phase B RMS = %.2f V\n", rms_B);
+    printf("Phase C RMS = %.2f V\n\n", rms_C);
+
+    printf("Phase A DC Offset = %.5f V\n", dc_A);
+    printf("Phase B DC Offset = %.5f V\n", dc_B);
+    printf("Phase C DC Offset = %.5f V\n\n", dc_C);
+
     printf("Phase A Peak-to-Peak = %.2f V\n", p2p_A);
+    printf("Phase B Peak-to-Peak = %.2f V\n", p2p_B);
+    printf("Phase C Peak-to-Peak = %.2f V\n\n", p2p_C);
+
+    printf("Phase A Compliance = %s\n", compliant_A ? "COMPLIANT" : "NOT COMPLIANT");
+    printf("Phase B Compliance = %s\n", compliant_B ? "COMPLIANT" : "NOT COMPLIANT");
+    printf("Phase C Compliance = %s\n", compliant_C ? "COMPLIANT" : "NOT COMPLIANT");
 
     return 0;
 }
@@ -181,4 +194,13 @@ double calculate_peak_to_peak(WaveformSample samples[], int count, int phase)
     }
 
     return max_val - min_val;
+}
+// RMS compliance check
+
+int check_compliance(double rms)
+{
+    if (rms >= 207.0 && rms <= 253.0)
+        return 1;   // compliant
+    else
+        return 0;   // not compliant
 }
