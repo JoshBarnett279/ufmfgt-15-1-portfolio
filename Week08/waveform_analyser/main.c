@@ -20,9 +20,46 @@ double calculate_rms(WaveformSample samples[], int count, int phase);
 double calculate_dc_offset(WaveformSample samples[], int count, int phase);
 int detect_clipping(WaveformSample samples[], int count);
 
-int main() {
+int main(void) {
     WaveformSample samples[MAX_SAMPLES];
 
-    printf("Waveform analyser started\n");
+    int count = load_csv("power_quality_log.csv", samples, MAX_SAMPLES);
+
+    printf("Loaded %d samples\n",count);
+
     return 0;
+}
+int load_csv(const char *filename, WaveformSample samples[], int max_samples)
+{
+    FILE *fp = fopen(filename, "r");
+
+    if (fp == NULL)
+    {
+        printf("Error opening file.\n");
+        return 0;
+    }
+
+    char line[256];
+    int count = 0;
+
+    // Skip header line
+    fgets(line, sizeof(line), fp);
+
+    while (fgets(line, sizeof(line), fp) != NULL && count < max_samples)
+    {
+        sscanf(line, "%lf,%lf,%lf,%lf,%lf,%lf,%lf",
+               &samples[count].timestamp,
+               &samples[count].phase_A_voltage,
+               &samples[count].phase_B_voltage,
+               &samples[count].phase_C_voltage,
+               &samples[count].frequency,
+               &samples[count].power_factor,
+               &samples[count].thd_percent);
+
+        count++;
+    }
+
+    fclose(fp);
+
+    return count;
 }
