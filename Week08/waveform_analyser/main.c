@@ -22,6 +22,13 @@ int detect_clipping(WaveformSample samples[], int count);
 int detect_clipping_phase(WaveformSample samples[], int count, int phase);
 double calculate_peak_to_peak(WaveformSample samples[], int count, int phase);
 int check_compliance(double rms);
+void write_results(const char *filename,
+                   double rms_A, double rms_B, double rms_C,
+                   double dc_A, double dc_B, double dc_C,
+                   double p2p_A, double p2p_B, double p2p_C,
+                   int comp_A, int comp_B, int comp_C,
+                   int clips_A, int clips_B, int clips_C);
+
 
 int main(void) {
     WaveformSample samples[MAX_SAMPLES];
@@ -61,6 +68,17 @@ int main(void) {
     printf("Phase A Compliance = %s\n", compliant_A ? "COMPLIANT" : "NOT COMPLIANT");
     printf("Phase B Compliance = %s\n", compliant_B ? "COMPLIANT" : "NOT COMPLIANT");
     printf("Phase C Compliance = %s\n", compliant_C ? "COMPLIANT" : "NOT COMPLIANT");
+
+    int clips_A = detect_clipping_phase(samples, count, 0);
+    int clips_B = detect_clipping_phase(samples, count, 1);
+    int clips_C = detect_clipping_phase(samples, count, 2);
+
+    write_results("results.txt",
+                  rms_A, rms_B, rms_C,
+                  dc_A, dc_B, dc_C,
+                  p2p_A, p2p_B, p2p_C,
+                  compliant_A, compliant_B, compliant_C,
+                  clips_A, clips_B, clips_C);
 
     return 0;
 }
@@ -203,4 +221,52 @@ int check_compliance(double rms)
         return 1;   // compliant
     else
         return 0;   // not compliant
+}
+
+// write to results.txt
+
+void write_results(const char *filename,
+                   double rms_A, double rms_B, double rms_C,
+                   double dc_A, double dc_B, double dc_C,
+                   double p2p_A, double p2p_B, double p2p_C,
+                   int comp_A, int comp_B, int comp_C,
+                   int clips_A, int clips_B, int clips_C)
+{
+    FILE *fp = fopen(filename, "w");
+
+    if (fp == NULL)
+    {
+        printf("Error writing file.\n");
+        return;
+    }
+
+    fprintf(fp, "Power Quality Analysis Results\n\n");
+
+    fprintf(fp, "RMS Voltage:\n");
+    fprintf(fp, "Phase A: %.2f V\n", rms_A);
+    fprintf(fp, "Phase B: %.2f V\n", rms_B);
+    fprintf(fp, "Phase C: %.2f V\n\n", rms_C);
+
+    fprintf(fp, "DC Offset:\n");
+    fprintf(fp, "Phase A: %.5f V\n", dc_A);
+    fprintf(fp, "Phase B: %.5f V\n", dc_B);
+    fprintf(fp, "Phase C: %.5f V\n\n", dc_C);
+
+    fprintf(fp, "Peak-to-Peak Voltage:\n");
+    fprintf(fp, "Phase A: %.2f V\n", p2p_A);
+    fprintf(fp, "Phase B: %.2f V\n", p2p_B);
+    fprintf(fp, "Phase C: %.2f V\n\n", p2p_C);
+
+    fprintf(fp, "Compliance:\n");
+    fprintf(fp, "Phase A: %s\n", comp_A ? "COMPLIANT" : "NOT COMPLIANT");
+    fprintf(fp, "Phase B: %s\n", comp_B ? "COMPLIANT" : "NOT COMPLIANT");
+    fprintf(fp, "Phase C: %s\n\n", comp_C ? "COMPLIANT" : "NOT COMPLIANT");
+
+    fprintf(fp, "Clipping Events:\n");
+    fprintf(fp, "Phase A: %d\n", clips_A);
+    fprintf(fp, "Phase B: %d\n", clips_B);
+    fprintf(fp, "Phase C: %d\n", clips_C);
+    fprintf(fp, "Total: %d\n", clips_A + clips_B + clips_C);
+
+    fclose(fp);
 }
