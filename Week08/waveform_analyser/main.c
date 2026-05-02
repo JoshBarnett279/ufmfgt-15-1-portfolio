@@ -67,12 +67,10 @@ int load_csv(const char *filename, WaveformSample samples[], int max_samples)
 
     return count;
 }
-double calculate_rms(WaveformSample samples[], int count, int phase)
-{
+double calculate_rms(WaveformSample samples[], int count, int phase) {
     double sum_sq = 0.0;
 
-    for (int i = 0; i < count; i++)
-    {
+    for (int i = 0; i < count; i++) {
         double value;
 
         if (phase == 0)
