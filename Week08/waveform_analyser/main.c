@@ -31,6 +31,10 @@ int main(void) {
 
     printf("Phase A RMS = %.2f V\n", rms_A);
 
+    double dc_A = calculate_dc_offset(samples, count, 0);
+
+    printf("Phase A DC Offset = %.5f V\n", dc_A);
+
     return 0;
 }
 int load_csv(const char *filename, WaveformSample samples[], int max_samples)
@@ -67,6 +71,9 @@ int load_csv(const char *filename, WaveformSample samples[], int max_samples)
 
     return count;
 }
+
+// RMS calculation
+
 double calculate_rms(WaveformSample samples[], int count, int phase) {
     double sum_sq = 0.0;
 
@@ -84,4 +91,26 @@ double calculate_rms(WaveformSample samples[], int count, int phase) {
     }
 
     return sqrt(sum_sq / count);
+}
+
+//DC offset / average voltage
+double calculate_dc_offset(WaveformSample samples[], int count, int phase)
+{
+    double sum = 0.0;
+
+    for (int i = 0; i < count; i++)
+    {
+        double value;
+
+        if (phase == 0)
+            value = samples[i].phase_A_voltage;
+        else if (phase == 1)
+            value = samples[i].phase_B_voltage;
+        else
+            value = samples[i].phase_C_voltage;
+
+        sum += value;
+    }
+
+    return sum / count;
 }
