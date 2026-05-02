@@ -1,0 +1,47 @@
+START
+
+Define a structure called WaveformSample
+    timestamp
+    phase A voltage
+    phase B voltage
+    phase C voltage
+    frequency
+    power factor
+    THD percent
+
+Create an array to store 1000 waveform samples
+
+Open the CSV input file
+
+IF file cannot be opened THEN
+    Print error message
+    Stop program
+END IF
+
+Skip the header row
+
+Read each row from the CSV file
+    Store values into the waveform sample array
+END WHILE
+
+Close the CSV file
+
+Calculate RMS voltage for Phase A
+Calculate RMS voltage for Phase B
+Calculate RMS voltage for Phase C
+
+Calculate DC offset for each phase
+
+Find maximum and minimum voltage for each phase
+
+Detect clipping events where voltage is greater than or equal to 324.9 or less than or equal to -324.9
+
+Open results.txt for writing
+
+Write calculated results to results.txt
+
+Close results.txt
+
+Print message that analysis is complete
+
+END
